@@ -1,10 +1,10 @@
 import Nav from '../Nav';
 
-function Header() {
+function Header({ setUserId }) {
    return (
       <header>
          <h1>Blogs</h1>
-         <Nav/>
+         <Nav setUserId={setUserId} />
       </header>
    )
 }

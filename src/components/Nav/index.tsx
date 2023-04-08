@@ -1,9 +1,12 @@
+import { Dispatch, SetStateAction } from 'react';
 import useSWR from 'swr'
 import { getUsers, usersUrlEndpoint } from '../../api/usersApi';
 
-function Nav() {
+function Nav({ setUserId }: { setUserId: Dispatch<SetStateAction<number>>}) {
 
-   const { data: users, error, isLoading, mutate } = useSWR(usersUrlEndpoint, getUsers)
+   const { data: users, error, isLoading, mutate } = useSWR(usersUrlEndpoint, getUsers, {
+      revalidateOnFocus: false
+   })
 
    let options;
 
@@ -19,7 +22,7 @@ function Nav() {
          )
       })
       const titleValue =
-         <option key="opt0" value="0">
+         <option key="opt0" value={0}>
             Employees
          </option>
       options.push(titleValue)
@@ -38,7 +41,7 @@ function Nav() {
       <select
          name="selectMenu"
          id="selectMenu"
-         value={0} onChange={() => { }} aria-label="Employee Name"
+         onChange={(e) => { setUserId(Number(e.target.value)) }} aria-label="Employee Name"
          className="selectMenu">
          {options}
       </select>

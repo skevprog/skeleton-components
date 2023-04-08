@@ -30,6 +30,13 @@
   background-color: var(--MAIN-BGCOLOR);
 }
 
+.loading {
+  color: var(--MAIN-FONT-COLOR);
+  margin: 2rem;
+  font-size: 1.5rem;
+}
+
+
 html {
   font-family: 'Roboto', sans-serif;
 }
@@ -43,6 +50,13 @@ body {
 
 select {
   font: inherit;
+}
+
+.selectMenu  {
+  width: 270px;
+  margin-top: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
 }
 
 main {
