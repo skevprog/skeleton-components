@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import { getPostsByUserId, postsUrlEndpoint } from '../../../api/postsApi'
+import Post from '../PostItem'
 
 function PostsList({ userId }: { userId: User['id'] }) {
 
@@ -14,19 +15,16 @@ function PostsList({ userId }: { userId: User['id'] }) {
          Select an employee to view posts
       </p>
    } else if (isLoading) {
-      content = <h1>Loading...</h1>
+      content =  <p className="loading">Loading...</p>
    } else if (error) {
       content = <p>{error.message}</p>
    } else {
       content = (
          <main>
             {posts.map((post: Post) => (
-               <div key={post.id}>
-                  <h2>{post.title}</h2>
-                  <p>{post.body}</p>
-               </div>))}
-         </main>
-      )
+               <Post post={post} />
+            ))}
+         </main>)
    }
 
    return content;
